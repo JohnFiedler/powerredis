@@ -1,11 +1,12 @@
 Project Description
+=======
 
 
 This project provides a way to access a Redis server via Powershell Cmdlets. You can use command like Get-RedisKey, Add-RedisSetItems, and Remove-RedisHashEntry to manipulate the keys on the redis server.
 
 
 
-Requirements
+# Requirements
 
 Free Redis Server = http://redis.io/
 Powershell
@@ -38,9 +39,9 @@ C# Service Stack library this project wraps.https://github.com/ServiceStack/Serv
 Redis Server.http://redis.io/
 
 
-Cmdlet Mapping
+# Cmdlet Mapping
 
-Keys	
+## Keys	
 KEYS	Search-RedisKeys
 DEL	Remove-RedisKey
 EXISTS	Get-RedisExists
@@ -53,14 +54,14 @@ Type	Get-RedisType
 --Not implemented	
 Move,object,persist,renamenx,sort,eval	
 
-Strings	
+## Strings	
 GET	Get-RedisKey
 SET	Set-RedisKey
 --Not implemented	
 append,decr,decrby,getbit,getrange,getset	
 incr,mget,mset,msetnx,setbit,setex,setnx,setrange	
 
-Hashes	
+## Hashes	
 HSET	Set-RedisHashValue
 HSETNX	Set-RedisHashValueIfNotExists
 HMGET	Get-RedisHashAll
@@ -73,7 +74,7 @@ HINCRBY	Set-RedisHashIncrement
 HLEN	Get-RedisHashLength
 HMSET	Set-RedisHashValues
 
-Lists	
+## Lists	
 Get-RedisList
 Add-RedisListItems
 RPush	Add-RedisListItem
@@ -91,7 +92,7 @@ linsert, lset, lpush, rpoplpush, rpushx, lpushx
 
 
 
-Sets	
+## Sets	
 SMEMBERS	Get-RedisSet
 SADDS	Add-RedisSetItems
 SADD	Add-RedisSetItem
@@ -108,7 +109,7 @@ SREM	Remove-RedisSetMember
 SUNION	Add-RedisSets
 SUNIONSTORE	Add-RedisSetsStore
 
-SortedSets	
+## SortedSets	
 ZADDSCORE	Add-RedisSortedSetItemScore
 ZADD	Add-RedisSortedSetItem
 ZCARD	Get-RedisSortedSetCount
@@ -117,12 +118,12 @@ zcount,zincrby,zinterstore,zrange,zrangebyscore,zrank
 zrem,zremrangebyrank,zremrangebyscore,zrevrange
 zrevrank,zscore,zunionstore	
 
-Strings	
+## Strings	
 GET	Get-RedisKey
 SET	Set-RedisKey
 
-Server	
+## Server	
 INFO	Get-RedisInfo
 
-Others not implemented	
+## Others not implemented	
 Pub/Sub and Transactions
