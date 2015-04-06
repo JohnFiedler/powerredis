@@ -1,0 +1,62 @@
+﻿
+
+//Bugs
+
+
+//to work on
+Write a help file for each cmdlet
+
+
+//completed
+.1
+Update Set params to do 0,1, value from pipeline
+Update SortedSets params to do 0,1, value from pipeline
+Change writeobject to writeobjects
+	protected void WriteObjects(IEnumerable objects)
+        {
+            foreach (var obj in objects)
+            {
+                WriteObject(obj);
+            }
+        }
+If not connected then try and connect or say not connected
+[ValidateNotNullOrEmpty]
+Map Redis commands to powerredis commands
+.2
+Finish off the cmdlets
+Work on Strings
+    //DONE
+    //append
+    //decr
+    //decrby
+    //getset
+    //mget
+    //mset
+Work on Sorted Sets
+	//zcount
+    //zincrby
+    //zrange
+    //zrangebyscore
+    //zrank
+    //zinterstore
+    //zrem
+    //zremrangebyrank
+    //zremrangebyscore
+    //zrevrange
+    //zrevrangebyscore
+    //zscore
+    //zunionstore
+
+
+//Release
+Sign the script
+MSI Installer
+
+//future
+Lookinto some type of config like quest AD cmdlets
+	number of lines outputed
+	default ser	ver, db
+Do something with PubSub
+Do something with Transactions
+NuGet
+Add aliases for each redis command
