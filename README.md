@@ -1,6 +1,7 @@
 Project Description
 =======
 
+port from https://powerredis.codeplex.com/
 
 This project provides a way to access a Redis server via Powershell Cmdlets. You can use command like Get-RedisKey, Add-RedisSetItems, and Remove-RedisHashEntry to manipulate the keys on the redis server.
 
