@@ -28,14 +28,15 @@ namespace PowerRedis2
         {
             try
             {
-                Globals.rc = new RedisClient(redisserver);
+                Globals.RedisManager = new RedisManagerPool(redisserver);
+                Globals.rc = (RedisClient) Globals.RedisManager.GetClient();
                 Globals.IsConnected = true;
                 WriteVerbose("Connected");
             }
-            catch
+            catch (RedisException ex)
             {
                 Globals.IsConnected = false;
-                WriteObject("Could not connect");
+                WriteError(new ErrorRecord(ex, "Could not connect", System.Management.Automation.ErrorCategory.ConnectionError, redisserver));
             }
         }
     }
@@ -46,7 +47,8 @@ namespace PowerRedis2
         protected override void ProcessRecord()
         {
             Globals.rc.Dispose();
-            WriteObject("Disconnected");
+            Globals.RedisManager.Dispose();
+            WriteVerbose("Disconnected");
         }
     }
     #endregion

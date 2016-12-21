@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Collections;
-
+using ServiceStack.Redis;
 
 namespace PowerRedis2
 {
@@ -21,7 +21,10 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -58,11 +61,14 @@ namespace PowerRedis2
             get { return keys; }
             set { keys = value; }
         }
-        private string[] keys;                                                                                                                             
+        private string[] keys;
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -91,7 +97,10 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -131,7 +140,10 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -171,7 +183,10 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -192,7 +207,10 @@ namespace PowerRedis2
     {
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -231,7 +249,10 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
@@ -290,7 +311,10 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteObject("Not Connected"); }
+            if (!Globals.IsConnected)
+            {
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+            }
         }
 
         protected override void ProcessRecord()
