@@ -1,7 +1,5 @@
 ﻿using System.Management.Automation;
 using ServiceStack.Redis;
-using System.Collections.Generic;
-using System;
 
 
 namespace PowerRedis2
@@ -32,7 +30,7 @@ namespace PowerRedis2
             {
                 Globals.rc = new RedisClient(redisserver);
                 Globals.IsConnected = true;
-                WriteObject("Connected");
+                WriteVerbose("Connected");
             }
             catch
             {
@@ -42,8 +40,8 @@ namespace PowerRedis2
         }
     }
 
-    [Cmdlet("DisConnect", "RedisServer")]
-    public class DisConnectRedisServerCommand : Cmdlet
+    [Cmdlet("Disconnect", "RedisServer")]
+    public class DisconnectRedisServerCommand : Cmdlet
     {
         protected override void ProcessRecord()
         {

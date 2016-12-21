@@ -1,7 +1,4 @@
 ﻿using System.Management.Automation;
-using ServiceStack.Redis;
-using System.Collections.Generic;
-using System;
 
 
 namespace PowerRedis2
@@ -341,7 +338,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string IntoSetID
+        public string IntoSetId
         {
             get { return intosetid; }
             set { intosetid = value; }
@@ -350,7 +347,7 @@ namespace PowerRedis2
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string[] SetIDs
+        public string[] SetIds
         {
             get { return setids; }
             set { setids = value; }
@@ -506,8 +503,8 @@ namespace PowerRedis2
     }
 
     //zrevrange
-    [Cmdlet(VerbsCommon.Get, "RedisSortedSetRangeDescIndex")]
-    public class GetRedisSortedSetRangeDescIndexCommand : Cmdlet
+    [Cmdlet(VerbsCommon.Get, "RedisSortedSetRangeDescendingIndex")]
+    public class GetRedisSortedSetRangeDescendingIndexCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]

@@ -1,0 +1,20 @@
+<Dictionary>  
+   <Words>  
+      <Recognized>  
+        <Word>Redis</Word>
+        <Word>Globals</Word>
+        <Word>rc</Word>
+        <Word>Interstore</Word>
+      </Recognized>  
+      <Deprecated>  
+      </Deprecated>  
+   </Words>  
+   <Acronyms>  
+      <CasingExceptions>
+        <Acronym>BLPOP</Acronym>
+        <Acronym>BRPOP</Acronym>
+        <Acronym>TTL</Acronym>
+        <Acronym>rc</Acronym>
+      </CasingExceptions>  
+   </Acronyms>  
+</Dictionary>  

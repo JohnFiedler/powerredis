@@ -1,7 +1,5 @@
 ﻿using System.Management.Automation;
-using ServiceStack.Redis;
 using System.Collections.Generic;
-using System;
 
 
 namespace PowerRedis2
@@ -318,7 +316,7 @@ namespace PowerRedis2
 
     //HIncrby
     [Cmdlet(VerbsCommon.Set, "RedisHashIncrement")]
-    public class SetRedisHashIncrCommand : Cmdlet
+    public class SetRedisHashIncrementCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]

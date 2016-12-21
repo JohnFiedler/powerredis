@@ -1,7 +1,5 @@
 ﻿using System.Management.Automation;
-using ServiceStack.Redis;
 using System.Collections.Generic;
-using System;
 
 
 namespace PowerRedis2
@@ -51,12 +49,12 @@ namespace PowerRedis2
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Val
+        public string Value
         {
-            get { return val; }
-            set { val = value; }
+            get { return _value; }
+            set { _value = value; }
         }
-        private string val;
+        private string _value;
 
         protected override void BeginProcessing()
         {
@@ -67,7 +65,7 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.Set(key, val));
+                WriteObject(Globals.rc.Set(key, Value));
             }
             catch
             {
@@ -96,12 +94,12 @@ namespace PowerRedis2
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Val
+        public string Value
         {
-            get { return val; }
-            set { val = value; }
+            get { return _value; }
+            set { _value = value; }
         }
-        private string val;
+        private string _value;
 
         protected override void BeginProcessing()
         {
@@ -224,10 +222,10 @@ namespace PowerRedis2
         [ValidateNotNullOrEmpty]
         public string Val
         {
-            get { return val; }
-            set { val = value; }
+            get { return _value; }
+            set { _value = value; }
         }
-        private string val;
+        private string _value;
 
         protected override void BeginProcessing()
         {
@@ -238,7 +236,7 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.GetAndSetEntry(key, val));
+                WriteObject(Globals.rc.GetAndSetValue(key, val));
             }
             catch
             {

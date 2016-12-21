@@ -1,5 +1,4 @@
 ﻿using System.Management.Automation;
-using ServiceStack.Redis;
 using System.Collections.Generic;
 using System;
 using System.Collections;
@@ -109,7 +108,7 @@ namespace PowerRedis2
 
     //expire
     [Cmdlet(VerbsCommon.Set, "RedisExpire")]
-    public class SetRedisExireCommand : Cmdlet
+    public class SetRedisExpireCommand : Cmdlet
     {
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
@@ -150,7 +149,7 @@ namespace PowerRedis2
 
     //expireat
     [Cmdlet(VerbsCommon.Set, "RedisExpiresAt")]
-    public class SetRedisExiresAtCommand : Cmdlet
+    public class SetRedisExpiresAtCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
