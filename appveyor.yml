@@ -1,6 +1,7 @@
 skip_commits:
   files:
-    - appveyor.yml
+    # treat appveyor changes as new build triggers until the ErrorRecord issue is resolved
+    #- appveyor.yml
     - README.md
 
 branches:
@@ -8,6 +9,8 @@ branches:
     - refresh
 
 version: 1.0.{build}
+
+os: Visual Studio 2015
 
 init:
   - ps: |

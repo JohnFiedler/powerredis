@@ -1,5 +1,5 @@
-﻿using System.Management.Automation;
-using ServiceStack.Redis;
+﻿using ServiceStack.Redis;
+using System.Management.Automation;
 
 
 namespace PowerRedis2
@@ -40,7 +40,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -82,7 +82,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -115,7 +115,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -148,7 +148,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -201,7 +201,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -251,7 +251,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -301,7 +301,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -342,7 +342,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -383,7 +383,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -424,7 +424,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -474,7 +474,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -524,7 +524,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -574,7 +574,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -624,7 +624,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -665,7 +665,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
@@ -706,7 +706,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.NotSpecified, null));
             }
         }
 
