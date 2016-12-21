@@ -20,7 +20,7 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, "")); }
+            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, "")); }
         }
         protected override void ProcessRecord()
         {
@@ -59,7 +59,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
             }
         }
 
@@ -105,7 +105,7 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, "")); }
+            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, "")); }
         }
 
         protected override void ProcessRecord()
@@ -143,7 +143,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
             }
         }
         protected override void ProcessRecord()
@@ -190,7 +190,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
             }
         }
 
@@ -238,7 +238,7 @@ namespace PowerRedis2
         {
             if (!Globals.IsConnected)
             {
-                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));
+                WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));
             }
         }
 
@@ -275,7 +275,7 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, ""));  }
+            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, ""));  }
         }
 
         protected override void ProcessRecord()
@@ -311,7 +311,7 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, "")); }
+            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, "")); }
         }
 
         protected override void ProcessRecord()
@@ -347,7 +347,7 @@ namespace PowerRedis2
 
         protected override void BeginProcessing()
         {
-            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", System.Management.Automation.ErrorCategory.ConnectionError, "")); }
+            if (!Globals.IsConnected) { WriteError(new ErrorRecord(new RedisException("Not Connected"), "Not Connected", ErrorCategory.ConnectionError, "")); }
         }
 
         protected override void ProcessRecord()

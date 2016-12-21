@@ -36,7 +36,7 @@ namespace PowerRedis2
             catch (RedisException ex)
             {
                 Globals.IsConnected = false;
-                WriteError(new ErrorRecord(ex, "Could not connect", System.Management.Automation.ErrorCategory.ConnectionError, redisserver));
+                WriteError(new ErrorRecord(ex, "Could not connect", ErrorCategory.ConnectionError, redisserver));
             }
         }
     }
