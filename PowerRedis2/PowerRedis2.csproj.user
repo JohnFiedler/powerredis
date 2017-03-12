@@ -3,7 +3,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
-    <StartArguments>-noexit -command &amp; “import-module C:\hg\codeplex\powerredis\PowerRedis2\bin\Debug\PowerRedis2.dll”</StartArguments>
-    <StartWorkingDirectory>C:\hg\codeplex\powerredis\PowerRedis2\bin\Debug\</StartWorkingDirectory>
+    <StartArguments>-noexit -command &amp; “import-module .\PowerRedis2.dll”</StartArguments>
+    <StartWorkingDirectory>
+    </StartWorkingDirectory>
   </PropertyGroup>
 </Project>

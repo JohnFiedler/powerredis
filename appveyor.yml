@@ -1,0 +1,42 @@
+skip_commits:
+  files:
+    # treat appveyor changes as new build triggers until the ErrorRecord issue is resolved
+    #- appveyor.yml
+    - README.md
+
+branches:
+  only:
+    - refresh
+
+version: 1.0.{build}
+
+os: Visual Studio 2015
+
+init:
+  - ps: |
+      if ($env:APPVEYOR_REPO_TAG -eq "true")
+      {
+        Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))"
+      }
+      else
+      {
+        Update-AppveyorBuild -Version "0.0.$($env:APPVEYOR_BUILD_NUMBER)"
+      }
+
+install:
+  - cmd: nuget install redis-64 -excludeversion
+  - cmd: redis-64\tools\redis-server.exe --service-install
+  - cmd: redis-64\tools\redis-server.exe --service-start
+
+configuration: Release
+
+before_build:
+  - nuget restore
+  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+
+build:
+  verbosity: normal
+
+artifacts:
+  - path: PowerRedis2\bin\$(configuration)\*.dll
+

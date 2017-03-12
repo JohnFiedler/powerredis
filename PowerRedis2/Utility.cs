@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ServiceStack.Redis;
-using System.Management.Automation;
+﻿using ServiceStack.Redis;
 
 namespace PowerRedis2
 {
-    public class Utility
+    public static class Utility
     {
         public static void Connect(string aRedisServer, int database)
         {

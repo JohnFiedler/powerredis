@@ -1,7 +1,5 @@
 ﻿using System.Management.Automation;
 using ServiceStack.Redis;
-using System.Collections.Generic;
-using System;
 
 
 namespace PowerRedis2
@@ -30,25 +28,27 @@ namespace PowerRedis2
         {
             try
             {
-                Globals.rc = new RedisClient(redisserver);
+                Globals.RedisManager = new RedisManagerPool(redisserver);
+                Globals.rc = (RedisClient) Globals.RedisManager.GetClient();
                 Globals.IsConnected = true;
-                WriteObject("Connected");
+                WriteVerbose("Connected");
             }
-            catch
+            catch (RedisException ex)
             {
                 Globals.IsConnected = false;
-                WriteObject("Could not connect");
+                WriteError(new ErrorRecord(ex, "Could not connect", ErrorCategory.NotSpecified, redisserver));
             }
         }
     }
 
-    [Cmdlet("DisConnect", "RedisServer")]
-    public class DisConnectRedisServerCommand : Cmdlet
+    [Cmdlet("Disconnect", "RedisServer")]
+    public class DisconnectRedisServerCommand : Cmdlet
     {
         protected override void ProcessRecord()
         {
             Globals.rc.Dispose();
-            WriteObject("Disconnected");
+            Globals.RedisManager.Dispose();
+            WriteVerbose("Disconnected");
         }
     }
     #endregion
