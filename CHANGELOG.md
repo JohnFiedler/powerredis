@@ -10,3 +10,7 @@
 + Added minimal `appveyor.yml` for CI building.
   - Added framework for Redis server install to be used for future CI tests.
 + Converted `Connect-RedisServer` from using `RedisClient` to `RedisManagerPool`.
+
+# 2.0.0
++ Migrate to .NET Standard 2.0
++ Create a Nuget Package

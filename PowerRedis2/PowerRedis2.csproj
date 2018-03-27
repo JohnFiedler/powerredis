@@ -10,8 +10,11 @@
     <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/JohnFiedler/powerredis</RepositoryUrl>
     <PackageTags>PowerShell, Redis, PowerRedis</PackageTags>
-    <PackageReleaseNotes>[1.0.0] MielieSpoor: Initial package creation</PackageReleaseNotes>
+    <PackageReleaseNotes>[2.0.0] MielieSpoor: Migrate to .NETStandard 2</PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/JohnFiedler/powerredis/blob/master/LICENSE</PackageLicenseUrl>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
