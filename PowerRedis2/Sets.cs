@@ -9,12 +9,7 @@ namespace PowerRedis2
     public class GetRedisSetCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -23,7 +18,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetAllItemsFromSet(key));
+            WriteObject(Globals.rc.GetAllItemsFromSet(this.Key));
         }
 
         protected override void EndProcessing()
@@ -38,21 +33,10 @@ namespace PowerRedis2
     public class AddRedisSetItemsCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
-        public List<string> SetItems
-        {
-            get { return setitems; }
-            set { setitems = value; }
-        }
-        private List<string> setitems;
-
+        public List<string> SetItems { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -64,7 +48,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.AddRangeToSet(key, setitems);
+            Globals.rc.AddRangeToSet(this.Key, this.SetItems);
         }
 
         protected override void EndProcessing()
@@ -78,21 +62,10 @@ namespace PowerRedis2
     public class AddRedisSetItemCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string SetItem
-        {
-            get { return setitem; }
-            set { setitem = value; }
-        }
-        private string setitem;
-
+        public string SetItem { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -104,7 +77,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.AddItemToSet(key, setitem);
+            Globals.rc.AddItemToSet(this.Key, this.SetItem);
         }
 
         protected override void EndProcessing()
@@ -119,13 +92,7 @@ namespace PowerRedis2
     public class GetRedisSetCountCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
-
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -137,7 +104,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SCard(key);
+            Globals.rc.SCard(this.Key);
         }
 
         protected override void EndProcessing()
@@ -152,20 +119,10 @@ namespace PowerRedis2
     public class SetRedisSetDiffCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -177,7 +134,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SDiff(key, keys);
+            Globals.rc.SDiff(this.Key, this.Keys);
         }
 
         protected override void EndProcessing()
@@ -192,28 +149,13 @@ namespace PowerRedis2
     public class SetRedisSetDiffStoreCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string Destination
-        {
-            get { return destination; }
-            set { destination = value; }
-        }
-        private string destination;
+        public string Destination { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -225,7 +167,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SDiffStore(destination, key, keys);
+            Globals.rc.SDiffStore(this.Destination, this.Key, this.Keys);
         }
 
         protected override void EndProcessing()
@@ -240,20 +182,10 @@ namespace PowerRedis2
     public class SetRedisSetInterCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -265,7 +197,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SDiff(key, keys);
+            Globals.rc.SDiff(this.Key, this.Keys);
         }
 
         protected override void EndProcessing()
@@ -280,20 +212,10 @@ namespace PowerRedis2
     public class SetRedisSetIntersectStoreCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -305,7 +227,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SInterStore(key, keys);
+            Globals.rc.SInterStore(this.Key, this.Keys);
         }
 
         protected override void EndProcessing()
@@ -320,20 +242,10 @@ namespace PowerRedis2
     public class GetRedisSetIsMemberCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string Member
-        {
-            get { return member; }
-            set { member = value; }
-        }
-        private string member;
+        public string Member { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -345,7 +257,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.SetContainsItem(key, member);
+            var info = Globals.rc.SetContainsItem(this.Key, this.Member);
             WriteObject(info);
         }
 
@@ -362,28 +274,13 @@ namespace PowerRedis2
     public class GetRedisSetMoveCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Source
-        {
-            get { return source; }
-            set { source = value; }
-        }
-        private string source;
+        public string Source { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string Destination
-        {
-            get { return destination; }
-            set { destination = value; }
-        }
-        private string destination;
+        public string Destination { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
-        public string Member
-        {
-            get { return member; }
-            set { member = value; }
-        }
-        private string member;
+        public string Member { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -395,7 +292,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.MoveBetweenSets(source, destination, member);
+            Globals.rc.MoveBetweenSets(this.Source, this.Destination, this.Member);
         }
 
         protected override void EndProcessing()
@@ -410,12 +307,7 @@ namespace PowerRedis2
     public class SetRedisSetPopCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -427,7 +319,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SPop(key);
+            Globals.rc.SPop(this.Key);
         }
 
         protected override void EndProcessing()
@@ -442,12 +334,7 @@ namespace PowerRedis2
     public class GetRedisSetRandomCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -459,7 +346,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.SRandMember(key);
+            var info = Globals.rc.SRandMember(this.Key);
             WriteObject(info);
         }
 
@@ -475,20 +362,10 @@ namespace PowerRedis2
     public class RemoveRedisSetMemberCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string Member
-        {
-            get { return member; }
-            set { member = value; }
-        }
-        private string member;
+        public string Member { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -500,7 +377,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.RemoveItemFromSet(key, member);
+            Globals.rc.RemoveItemFromSet(this.Key, this.Member);
         }
 
         protected override void EndProcessing()
@@ -515,20 +392,10 @@ namespace PowerRedis2
     public class AddRedisSetsCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string Member
-        {
-            get { return member; }
-            set { member = value; }
-        }
-        private string member;
+        public string Member { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -540,7 +407,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SUnion(keys);
+            Globals.rc.SUnion(this.Keys);
         }
 
         protected override void EndProcessing()
@@ -555,20 +422,10 @@ namespace PowerRedis2
     public class AddRedisSetsStoreCommand : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public string Destination
-        {
-            get { return destination; }
-            set { destination = value; }
-        }
-        private string destination;
+        public string Destination { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -580,7 +437,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SUnionStore(destination, keys);
+            Globals.rc.SUnionStore(this.Destination, this.Keys);
         }
 
         protected override void EndProcessing()

@@ -29,13 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ServiceStack" Version="5.0.2" />
-    <PackageReference Include="ServiceStack.Client" Version="5.0.2" />
-    <PackageReference Include="ServiceStack.Common" Version="5.0.2" />
-    <PackageReference Include="ServiceStack.Interfaces" Version="5.0.2" />
-    <PackageReference Include="ServiceStack.OrmLite.SqlServer" Version="5.0.2" />
-    <PackageReference Include="ServiceStack.Redis" Version="5.0.2" />
-    <PackageReference Include="ServiceStack.Text" Version="5.0.2" />
+    <PackageReference Include="ServiceStack" Version="5.7.0" />
+    <PackageReference Include="ServiceStack.Client" Version="5.7.0" />
+    <PackageReference Include="ServiceStack.Common" Version="5.7.0" />
+    <PackageReference Include="ServiceStack.Interfaces" Version="5.7.0" />
+    <PackageReference Include="ServiceStack.OrmLite.SqlServer" Version="5.7.0" />
+    <PackageReference Include="ServiceStack.Redis" Version="5.7.0" />
+    <PackageReference Include="ServiceStack.Text" Version="5.7.0" />
   </ItemGroup>
 
   <ItemGroup>

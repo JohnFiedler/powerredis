@@ -12,12 +12,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Pattern
-        {
-            get { return _Pattern; }
-            set { _Pattern = value; }
-        }
-        private string _Pattern;
+        public string Pattern { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -29,10 +24,10 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            if (_Pattern == null)
-                _Pattern = "*";
+            if (this.Pattern == null)
+                this.Pattern = "*";
             
-            List<string> info = Globals.rc.SearchKeys(_Pattern);
+            List<string> info = Globals.rc.SearchKeys(this.Pattern);
             WriteObjects(info);
         }
 
@@ -56,12 +51,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string[] Keys
-        {
-            get { return keys; }
-            set { keys = value; }
-        }
-        private string[] keys;
+        public string[] Keys { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -73,7 +63,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.Del(keys);
+            Globals.rc.Del(this.Keys);
         }
 
         protected override void EndProcessing()
@@ -88,12 +78,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -105,7 +90,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.Exists(key);
+            var info = Globals.rc.Exists(this.Key);
             WriteObject(info);
         }
 
@@ -122,21 +107,11 @@ namespace PowerRedis2
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int Seconds
-        {
-            get { return _Seconds; }
-            set { _Seconds = value; }
-        }
-        private int _Seconds;
+        public int Seconds { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -148,7 +123,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.Expire(key, _Seconds);
+            var info = Globals.rc.Expire(this.Key, this.Seconds);
             WriteObject(info);
         }
 
@@ -165,21 +140,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public DateTime ExpireAt
-        {
-            get { return expireat; }
-            set { expireat = value; }
-        }
-        private DateTime expireat;
+        public DateTime ExpireAt { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -191,7 +156,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.ExpireEntryAt(key, expireat);
+            var info = Globals.rc.ExpireEntryAt(this.Key, this.ExpireAt);
             WriteObject(info);
         }
 
@@ -231,21 +196,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string From
-        {
-            get { return _From; }
-            set { _From = value; }
-        }
-        private string _From;
+        public string From { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string To
-        {
-            get { return _To; }
-            set { _To = value; }
-        }
-        private string _To;
+        public string To { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -257,7 +212,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.Rename(_From,_To);
+            Globals.rc.Rename(this.From,this.To);
         }
 
         protected override void EndProcessing()
@@ -272,12 +227,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -286,7 +236,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.Ttl(_Key);
+            var info = Globals.rc.Ttl(this.Key);
             WriteObject(info);
         }
 
@@ -302,12 +252,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position=0, ValueFromPipeline=true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -319,7 +264,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.Type(_Key);
+            var info = Globals.rc.Type(this.Key);
             WriteObject(info);
         }
 

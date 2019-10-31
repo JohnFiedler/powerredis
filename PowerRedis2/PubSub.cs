@@ -13,12 +13,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Channel
-        {
-            get { return _Channel; }
-            set { _Channel = value; }
-        }
-        private string _Channel;
+        public string Channel { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -30,7 +25,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.Subscribe(_Channel));
+            WriteObject(Globals.rc.Subscribe(this.Channel));
         }
 
         protected override void EndProcessing()

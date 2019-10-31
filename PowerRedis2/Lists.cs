@@ -12,12 +12,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        private string name;
+        public string Name { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -29,7 +24,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetAllItemsFromList(name));
+            WriteObject(Globals.rc.GetAllItemsFromList(this.Name));
         }
 
         protected override void EndProcessing()
@@ -44,20 +39,10 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        private string name;
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
-        public List<string> ListItems
-        {
-            get { return listitems; }
-            set { listitems = value; }
-        }
-        private List<string> listitems;
+        public List<string> ListItems { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -69,7 +54,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.AddRangeToList(name, listitems);
+            Globals.rc.AddRangeToList(this.Name, this.ListItems);
             //WriteObject(Globals.rc.AddRangeToList(name, listitems));
         }
 
@@ -85,21 +70,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        private string name;
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string ListItem
-        {
-            get { return listitem; }
-            set { listitem = value; }
-        }
-        private string listitem;
+        public string ListItem { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -111,7 +86,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.AddItemToList(name, listitem);
+            Globals.rc.AddItemToList(this.Name, this.ListItem);
         }
 
         protected override void EndProcessing()
@@ -126,30 +101,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        private string name;
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int StartIndex
-        {
-            get { return startindex; }
-            set { startindex = value; }
-        }
-        private int startindex;
+        public int StartIndex { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int EndIndex
-        {
-            get { return endindex; }
-            set { endindex = value; }
-        }
-        private int endindex;
+        public int EndIndex { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -161,7 +121,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetRangeFromList(name, startindex, endindex));
+            WriteObject(Globals.rc.GetRangeFromList(this.Name, this.StartIndex, this.EndIndex));
         }
 
         protected override void EndProcessing()
@@ -176,21 +136,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = false, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public TimeSpan Timeout
-        {
-            get { return _Timeout; }
-            set { _Timeout = value; }
-        }
-        private TimeSpan _Timeout;
+        public TimeSpan Timeout { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -202,7 +152,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.BlockingRemoveStartFromList(_Key,_Timeout);
+            var info = Globals.rc.BlockingRemoveStartFromList(this.Key,this.Timeout);
             WriteObject(info);
         }
 
@@ -218,21 +168,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = false, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public TimeSpan Timeout
-        {
-            get { return _Timeout; }
-            set { _Timeout = value; }
-        }
-        private TimeSpan _Timeout;
+        public TimeSpan Timeout { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -244,7 +184,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.BlockingPopItemFromList(_Key, _Timeout);
+            var info = Globals.rc.BlockingPopItemFromList(this.Key, this.Timeout);
             WriteObject(info);
         }
 
@@ -260,21 +200,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Source
-        {
-            get { return _Source; }
-            set { _Source = value; }
-        }
-        private string _Source;
+        public string Source { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Destination
-        {
-            get { return _Destination; }
-            set { _Destination = value; }
-        }
-        private string _Destination;
+        public string Destination { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -286,7 +216,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.PopAndPushItemBetweenLists(_Source, _Destination);
+            var info = Globals.rc.PopAndPushItemBetweenLists(this.Source, this.Destination);
             WriteObject(info);
         }
 
@@ -302,21 +232,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int Index
-        {
-            get { return _Index; }
-            set { _Index = value; }
-        }
-        private int _Index;
+        public int Index { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -328,7 +248,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.LIndex(_Key, _Index);
+            var info = Globals.rc.LIndex(this.Key, this.Index);
             WriteObject(info);
         }
 
@@ -344,12 +264,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -361,7 +276,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.LLen(_Key);
+            var info = Globals.rc.LLen(this.Key);
             WriteObject(info);
         }
 
@@ -377,12 +292,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -394,7 +304,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.LPop(_Key);
+            Globals.rc.LPop(this.Key);
         }
 
         protected override void EndProcessing()
@@ -409,12 +319,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -426,7 +331,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.RPop(_Key);
+            Globals.rc.RPop(this.Key);
         }
 
         protected override void EndProcessing()
@@ -441,30 +346,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Value
-        {
-            get { return _Value; }
-            set { _Value = value; }
-        }
-        private string _Value;
+        public string Value { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int Count
-        {
-            get { return _Count; }
-            set { _Count = value; }
-        }
-        private int _Count;
+        public int Count { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -476,7 +366,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            var info = Globals.rc.RemoveItemFromList(_Key, _Value, _Count);
+            var info = Globals.rc.RemoveItemFromList(this.Key, this.Value, this.Count);
             WriteObject(info);
         }
 
@@ -492,30 +382,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int Start
-        {
-            get { return _Start; }
-            set { _Start = value; }
-        }
-        private int _Start;
+        public int Start { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int Stop
-        {
-            get { return _Stop; }
-            set { _Stop = value; }
-        }
-        private int _Stop;
+        public int Stop { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -527,7 +402,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.LTrim(_Key, _Start, _Stop);
+            Globals.rc.LTrim(this.Key, this.Start, this.Stop);
         }
 
         protected override void EndProcessing()

@@ -13,30 +13,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Value
-        {
-            get { return _Value; }
-            set { _Value = value; }
-        }
-        private string _Value;
+        public string Value { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -49,7 +34,7 @@ namespace PowerRedis2
         protected override void ProcessRecord()
         {
             
-            Globals.rc.SetEntryInHash(_Hash, _Key, _Value);
+            Globals.rc.SetEntryInHash(this.Hash, this.Key, this.Value);
         }
 
         protected override void EndProcessing()
@@ -64,30 +49,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Value
-        {
-            get { return _Value; }
-            set { _Value = value; }
-        }
-        private string _Value;
+        public string Value { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -99,7 +69,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SetEntryInHashIfNotExists(_Hash, _Key, _Value);
+            Globals.rc.SetEntryInHashIfNotExists(this.Hash, this.Key, this.Value);
         }
 
         protected override void EndProcessing()
@@ -115,12 +85,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -132,7 +97,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetAllEntriesFromHash(_Hash));
+            WriteObject(Globals.rc.GetAllEntriesFromHash(this.Hash));
         }
 
         protected override void EndProcessing()
@@ -147,21 +112,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -173,7 +128,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetValueFromHash(_Hash,_Key));
+            WriteObject(Globals.rc.GetValueFromHash(this.Hash,this.Key));
         }
 
         protected override void EndProcessing()
@@ -188,21 +143,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string[] Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string[] _Key;
+        public string[] Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -214,7 +159,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetValuesFromHash(_Hash, _Key));
+            WriteObject(Globals.rc.GetValuesFromHash(this.Hash, this.Key));
         }
 
         protected override void EndProcessing()
@@ -229,12 +174,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -246,7 +186,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.GetHashKeys(_Hash));
+            WriteObject(Globals.rc.GetHashKeys(this.Hash));
         }
 
         protected override void EndProcessing()
@@ -261,21 +201,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -287,7 +217,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.RemoveEntryFromHash(_Hash,_Key));
+            WriteObject(Globals.rc.RemoveEntryFromHash(this.Hash,this.Key));
         }
 
         protected override void EndProcessing()
@@ -303,21 +233,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -329,7 +249,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.HashContainsEntry(_Hash, _Key));
+            WriteObject(Globals.rc.HashContainsEntry(this.Hash, this.Key));
         }
 
         protected override void EndProcessing()
@@ -345,30 +265,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int IncrementBy
-        {
-            get { return _IncrementBy; }
-            set { _IncrementBy = value; }
-        }
-        private int _IncrementBy;
+        public int IncrementBy { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -380,7 +285,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.IncrementValueInHash(_Hash, _Key, _IncrementBy));
+            WriteObject(Globals.rc.IncrementValueInHash(this.Hash, this.Key, this.IncrementBy));
         }
 
         protected override void EndProcessing()
@@ -395,30 +300,15 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Hash
-        {
-            get { return _Hash; }
-            set { _Hash = value; }
-        }
-        private string _Hash;
+        public string Hash { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return _Key; }
-            set { _Key = value; }
-        }
-        private string _Key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int IncrementBy
-        {
-            get { return _IncrementBy; }
-            set { _IncrementBy = value; }
-        }
-        private int _IncrementBy;
+        public int IncrementBy { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -430,7 +320,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.HLen(_Hash));
+            WriteObject(Globals.rc.HLen(this.Hash));
         }
 
         protected override void EndProcessing()
@@ -454,12 +344,7 @@ namespace PowerRedis2
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public IEnumerable<KeyValuePair<string,string>> KeyValuePair
-        {
-            get { return _KeyValuePair; }
-            set { _KeyValuePair = value; }
-        }
-        private IEnumerable<KeyValuePair<string, string>> _KeyValuePair;
+        public IEnumerable<KeyValuePair<string,string>> KeyValuePair { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -471,7 +356,7 @@ namespace PowerRedis2
 
         protected override void ProcessRecord()
         {
-            Globals.rc.SetRangeInHash(_Hash, _KeyValuePair);
+            Globals.rc.SetRangeInHash(_Hash, this.KeyValuePair);
         }
 
         protected override void EndProcessing()

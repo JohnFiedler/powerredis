@@ -11,12 +11,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position= 0)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -24,7 +19,7 @@ namespace PowerRedis2
         }
         protected override void ProcessRecord()
         {
-            WriteObject(Globals.rc.Get<string>(key));
+            WriteObject(Globals.rc.Get<string>(this.Key));
         }
 
         protected override void EndProcessing()
@@ -39,21 +34,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Value
-        {
-            get { return _value; }
-            set { _value = value; }
-        }
-        private string _value;
+        public string Value { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -67,11 +52,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.Set(key, Value));
+                WriteObject(Globals.rc.Set(this.Key, Value));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error setting key", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error setting key", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -87,21 +72,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Value
-        {
-            get { return _value; }
-            set { _value = value; }
-        }
-        private string _value;
+        public string Value { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -112,11 +87,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.AppendToValue(key, _value));
+                WriteObject(Globals.rc.AppendToValue(this.Key, this.Value));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error appending key", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error appending key", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -132,12 +107,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -150,11 +120,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.Decr(key));
+                WriteObject(Globals.rc.Decr(this.Key));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error decrementing key", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error decrementing key", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -170,21 +140,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public int Value
-        {
-            get { return _value; }
-            set { _value = value; }
-        }
-        private int _value;
+        public int Value { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -198,11 +158,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.DecrBy(key, _value));
+                WriteObject(Globals.rc.DecrBy(this.Key, this.Value));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error decrementing key", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error decrementing key", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -218,21 +178,11 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Value
-        {
-            get { return _value; }
-            set { _value = value; }
-        }
-        private string _value;
+        public string Value { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -246,11 +196,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.GetAndSetValue(key, _value));
+                WriteObject(Globals.rc.GetAndSetValue(this.Key, this.Value));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error Getting and Setting key", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error Getting and Setting key", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -266,12 +216,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public string Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private string key;
+        public string Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -282,11 +227,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.Incr(key));
+                WriteObject(Globals.rc.Incr(this.Key));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error incrementing key", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error incrementing key", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -302,12 +247,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public List<string> Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private List<string> key;
+        public List<string> Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -318,11 +258,11 @@ namespace PowerRedis2
         {
             try
             {
-                WriteObject(Globals.rc.GetValues<string>(key));
+                WriteObject(Globals.rc.GetValues<string>(this.Key));
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error MGETTing", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error MGETTing", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
@@ -338,12 +278,7 @@ namespace PowerRedis2
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> Key
-        {
-            get { return key; }
-            set { key = value; }
-        }
-        private Dictionary<string, string> key;
+        public Dictionary<string, string> Key { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -354,11 +289,11 @@ namespace PowerRedis2
         {
             try
             {
-                Globals.rc.SetAll<string>(key);
+                Globals.rc.SetAll<string>(this.Key);
             }
             catch (RedisException ex)
             {
-                WriteError(new ErrorRecord(ex, "Error with MSET", ErrorCategory.NotSpecified, key));
+                WriteError(new ErrorRecord(ex, "Error with MSET", ErrorCategory.NotSpecified, this.Key));
             }
         }
 
