@@ -9,26 +9,16 @@ namespace PowerRedis2
     public class ConnectRedisServerCommand : Cmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipeline = true)]
-        public string RedisServer
-        {
-            get { return redisserver; }
-            set { redisserver = value; }
-        }
-        private string redisserver = "localhost";
+        public string RedisServer { get; set; } = "localhost";
 
         [Parameter(Mandatory = false, Position = 1, ValueFromPipeline = true)]
-        public int Database
-        {
-            get { return database; }
-            set { database = value; }
-        }
-        private int database = 0;
+        public int Database { get; set; } = 0;
 
         protected override void ProcessRecord()
         {
             try
             {
-                Globals.RedisManager = new RedisManagerPool(redisserver);
+                Globals.RedisManager = new RedisManagerPool(RedisServer);
                 Globals.rc = (RedisClient) Globals.RedisManager.GetClient();
                 Globals.IsConnected = true;
                 WriteVerbose("Connected");
@@ -36,7 +26,7 @@ namespace PowerRedis2
             catch (RedisException ex)
             {
                 Globals.IsConnected = false;
-                WriteError(new ErrorRecord(ex, "Could not connect", ErrorCategory.NotSpecified, redisserver));
+                WriteError(new ErrorRecord(ex, "Could not connect", ErrorCategory.NotSpecified, RedisServer));
             }
         }
     }
